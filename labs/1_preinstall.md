@@ -1,4 +1,4 @@
-01/05/2017
+## <center> <a name="pre_install"/> Day 1 - 01/05/2017
 
 1. Swapiness
 $ sudo cat /proc/sys/vm/swappiness
@@ -17,4 +17,7 @@ $ mount -t ext
 $ cat /sys/kernel/mm/transparent_hugepage/enabled
 $ echo never > /sys/kernel/mm/transparent_hugepage/enabled
 
-02/05/2017
+---
+<div style="page-break-after: always;"></div>
+
+## <center> <a name="aa"/> Day 2 - 02/05/2017
