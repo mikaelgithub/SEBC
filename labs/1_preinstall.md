@@ -1,3 +1,5 @@
+01/05/2017
+
 1. Swapiness
 $ sudo cat /proc/sys/vm/swappiness
 $ sudo sysctl vm.swappiness=1
@@ -15,3 +17,4 @@ $ mount -t ext
 $ cat /sys/kernel/mm/transparent_hugepage/enabled
 $ echo never > /sys/kernel/mm/transparent_hugepage/enabled
 
+02/05/2017
