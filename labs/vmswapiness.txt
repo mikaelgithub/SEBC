@@ -1,2 +1,0 @@
-//check vm swappiness
-sudo cat /proc/sys/vm/swappiness

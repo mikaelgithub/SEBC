@@ -86,6 +86,8 @@ $ sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm
 ```
 Enabling Mysql 5.5
 ```
+$ sudo vi /etc/yum.repos.d/mysql-community.repo
+or 
 $ sudo yum repolist enabled | grep mysql
 mysql-connectors-community/x86_64                MySQL Connectors Communi     36
 mysql-tools-community/x86_64                     MySQL Tools Community        47
@@ -270,16 +272,20 @@ $ sudo service cloudera-scm-server start
 $ sudo tail -f /var/log/cloudera-scm-server/cloudera-scm-server.log
 
 ```
-Preparing the cluster:
-on all nodes: 
-Set vm.swappiness
-Disable transparent hugepage support
-Install the mysql package
-Download and copy the JDBC connector
+* Preparing the cluster:
+	* on all nodes: 
+	* Set vm.swappiness
+	* Disable transparent hugepage support
+	* Install the mysql package
+```
+$ sudo yum install mysql
+```
+	* Download and copy the JDBC connector
 
 Preparing replica
 on server and replica nodes
-Install mysql-server on the server and replica nodes
+Install mysql-server
+
 ```
 $ mysql -u root -p
 GRANT REPLICATION SLAVE ON *.* TO 'root'@'ec2-34-208-235-6.us-west-2.compute.amazonaws.com' IDENTIFIED BY 'cloudera';
@@ -297,3 +303,15 @@ On the replica:
 CHANGE MASTER TO MASTER_HOST='ec2-34-209-76-165.us-west-2.compute.amazonaws.com', MASTER_USER='root', MASTER_PASSWORD='cloudera', MASTER_LOG_FILE='mysql_binary_log.000003', MASTER_LOG_POS=45695855;
 START SLAVE;
 SHOW SLAVE STATUS \G
+
+```
+Configuration of CM and CDH
+
+```
+List of hosts:
+NN1 172.31.17.69 ec2-34-209-76-165.us-west-2.compute.amazonaws.com,
+NN2 172.31.8.123 ec2-34-208-235-6.us-west-2.compute.amazonaws.com
+DN1 172.31.20.125 ec2-52-36-135-147.us-west-2.compute.amazonaws.com,
+DN2 172.31.25.62 ec2-52-10-91-94.us-west-2.compute.amazonaws.com,
+DN3 172.31.30.207 ec2-54-70-80-229.us-west-2.compute.amazonaws.com,
+
