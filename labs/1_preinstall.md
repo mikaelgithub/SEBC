@@ -2,7 +2,7 @@
 
 1. Swapiness
 ```
-$ sudo cat /proc/sys/vm/swappiness
+sudo cat /proc/sys/vm/swappiness
 $ sudo sysctl vm.swappiness=1
 ```
 <center> <img src="png/1_preinstall-swapiness.PNG"> </center>
@@ -17,9 +17,9 @@ $ mount -t ext
 
 4. Disable transparent hugepage support
 ```
-[ec2-user@ip-172-31-21-188 ~]$ sudo su
-[root@ip-172-31-21-188 ec2-user]# echo never > /sys/kernel/mm/transparent_hugepage/enabled
-[root@ip-172-31-21-188 ec2-user]# cat /sys/kernel/mm/transparent_hugepage/enabled
+$ sudo su
+$ echo never > /sys/kernel/mm/transparent_hugepage/enabled
+$ cat /sys/kernel/mm/transparent_hugepage/enabled
 always madvise [never]
 ```
 ---
@@ -29,7 +29,7 @@ always madvise [never]
 
 5. List your network interface configuration
 ```
-[ec2-user@ip-172-31-21-188 ~]$ netstat -i
+$ netstat -i
 Kernel Interface table
 Iface      MTU    RX-OK RX-ERR RX-DRP RX-OVR    TX-OK TX-ERR TX-DRP TX-OVR Flg
 eth0      9001      702      0      0 0           699      0      0      0 BMRU
@@ -38,9 +38,9 @@ lo       65536        4      0      0 0             4      0      0      0 LRU
 
 6. Forward and reverse lookup
 ```
-[ec2-user@ip-172-31-21-188 ~]$ getent hosts localhost
+$ getent hosts localhost
 ::1             localhost localhost.localdomain localhost6 localhost6.localdomain6
-[ec2-user@ip-172-31-21-188 ~]$ nslookup 35.162.188.199
+$ nslookup 35.162.188.199
 Server:         172.31.0.2
 Address:        172.31.0.2#53
 
@@ -53,7 +53,10 @@ Authoritative answers can be found from:
 
 7. NSCD
 ```
-[ec2-user@ip-172-31-21-188 ~]$ service nscd status
+yum install nscd
+yum install ntp
+service nscd start
+$ service nscd status
 Redirecting to /bin/systemctl status  nscd.service
 ● nscd.service - Name Service Cache Daemon
    Loaded: loaded (/usr/lib/systemd/system/nscd.service; disabled; vendor preset: disabled)
@@ -63,7 +66,8 @@ Redirecting to /bin/systemctl status  nscd.service
 
  8. NTPD
 ```
-[ec2-user@ip-172-31-21-188 ~]$ service ntpd status
+service ntpd start
+$ service ntpd status
 Redirecting to /bin/systemctl status  ntpd.service
 ● ntpd.service - Network Time Service
    Loaded: loaded (/usr/lib/systemd/system/ntpd.service; disabled; vendor preset: disabled)
@@ -76,37 +80,36 @@ Redirecting to /bin/systemctl status  ntpd.service
 ## <center> <a name="aa"/> MySQL installation 
 
 ```
-[ec2-user@ip-172-31-21-188 ~]$ sudo wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
-[ec2-user@ip-172-31-21-188 ~]$ sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm
-Preparing...                          ################################# [100%]
-Updating / installing...
-   1:mysql-community-release-el7-5    ################################# [100%]
-[ec2-user@ip-172-31-21-188 ~]$ yum update
+sudo yum install wget
+$ sudo wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+$ sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm
 ```
 Enabling Mysql 5.5
 ```
-[ec2-user@ip-172-31-21-188 ~]$ sudo yum repolist enabled | grep mysql
+$ sudo yum repolist enabled | grep mysql
 mysql-connectors-community/x86_64                MySQL Connectors Communi     36
 mysql-tools-community/x86_64                     MySQL Tools Community        47
 mysql56-community/x86_64                         MySQL 5.6 Community Serv    327
-[ec2-user@ip-172-31-21-188 ~]$ sudo yum-config-manager --disable mysql56-community
-[ec2-user@ip-172-31-21-188 ~]$ sudo yum-config-manager --enable mysql55-community
-[ec2-user@ip-172-31-21-188 ~]$ sudo yum repolist enabled | grep mysql
+$ sudo yum-config-manager --disable mysql56-community
+$ sudo yum-config-manager --enable mysql55-community
+$ sudo yum repolist enabled | grep mysql
 mysql-connectors-community/x86_64                MySQL Connectors Communi     36
 mysql-tools-community/x86_64                     MySQL Tools Community        47
 mysql55-community/x86_64                         MySQL 5.5 Community Serv    308
+$ yum update
 
 ```
 Installation
 ```
-[ec2-user@ip-172-31-21-188 ~]$ sudo yum install mysql-community-server
-[ec2-user@ip-172-31-21-188 ~]$ wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.0.8.tar.gz
-[ec2-user@ip-172-31-21-188 ~]$ sudo service mysqld start
+$ sudo yum install mysql-community-server
+$ wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.0.8.tar.gz
+$ sudo service mysqld start
 Redirecting to /bin/systemctl start  mysqld.service
-[ec2-user@ip-172-31-21-188 ~]$ sudo mv /var/lib/mysql/ib_logfile0 mysql_bkp/
-[ec2-user@ip-172-31-21-188 ~]$ sudo mv /var/lib/mysql/ib_logfile1 mysql_bkp/
-[ec2-user@ip-172-31-17-69 ~]$ sudo cp /etc/my.cnf /etc/my.cnf.old
-[ec2-user@ip-172-31-21-188 ~]$ sudo vi /etc/my.cnf
+mkdir mysql_bkp
+$ sudo mv /var/lib/mysql/ib_logfile0 mysql_bkp/
+$ sudo mv /var/lib/mysql/ib_logfile1 mysql_bkp/
+$ sudo cp /etc/my.cnf /etc/my.cnf.old
+$ sudo vi /etc/my.cnf2
 
 ```
 update my.cnf file 
@@ -158,15 +161,12 @@ sql_mode=STRICT_ALL_TABLES
 ```
 Then
 ```
-[ec2-user@ip-172-31-17-69 ~]$ sudo vi /etc/my.cnf2
-[ec2-user@ip-172-31-17-69 ~]$ sudo cp /etc/my.cnf2 /etc/my.cnf
+$ sudo cp /etc/my.cnf2 /etc/my.cnf
 
-[ec2-user@ip-172-31-21-188 ~]$ sudo /sbin/chkconfig mysqld on
-Note: Forwarding request to 'systemctl enable mysqld.service'.
-[ec2-user@ip-172-31-17-69 ~]$ sudo service mysql start
-Redirecting to /bin/systemctl start  mysql.service
+$ sudo /sbin/chkconfig mysqld on
+$ sudo service mysql start
 
-[ec2-user@ip-172-31-17-69 ~]$ sudo /usr/bin/mysql_secure_installation
+$ sudo /usr/bin/mysql_secure_installation
 	
 NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MySQL
       SERVERS IN PRODUCTION USE!  PLEASE READ EACH STEP CAREFULLY!
@@ -185,53 +185,27 @@ Setting the root password ensures that nobody can log into the MySQL
 root user without the proper authorisation.
 
 Set root password? [Y/n] Y
-New password:
-Re-enter new password:
-Password updated successfully!
-Reloading privilege tables..
- ... Success!
-By default, a MySQL installation has an anonymous user, allowing anyone
-to log into MySQL without having to have a user account created for
-them.  This is intended only for testing, and to make the installation
-go a bit smoother.  You should remove them before moving into a
-production environment.
+New password: cloudera
 Remove anonymous users? [Y/n] y
- ... Success!
-Normally, root should only be allowed to connect from 'localhost'.  This
-ensures that someone cannot guess at the root password from the network.
 Disallow root login remotely? [Y/n] n
- ... skipping.
-By default, MySQL comes with a database named 'test' that anyone can
-access.  This is also intended only for testing, and should be removed
-before moving into a production environment.
 Remove test database and access to it? [Y/n] y
- - Dropping test database...
-ERROR 1008 (HY000) at line 1: Can't drop database 'test'; database doesn't exist
- ... Failed!  Not critical, keep moving...
- - Removing privileges on test database...
- ... Success!
-Reloading the privilege tables will ensure that all changes made so far
-will take effect immediately.
 Reload privilege tables now? [Y/n] y
- ... Success!
-All done!  If you've completed all of the above steps, your MySQL
-installation should now be secure.
-Thanks for using MySQL!
 
+$ sudo service mysql stop
 ```
 
 Installing JDBC connector
 ```
-[ec2-user@ip-172-31-21-188 ~]$ wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.42.tar.gz
-[ec2-user@ip-172-31-17-69 ~]$ tar zxvf mysql-connector-java-5.1.42.tar.gz
-[ec2-user@ip-172-31-21-188 ~]$ sudo mkdir -p /usr/share/java/
-[ec2-user@ip-172-31-17-69 ~]$ sudo chmod -R 777 /usr/share/java
-[ec2-user@ip-172-31-21-188 ~]$ sudo cp mysql-connector-java-5.1.42/mysql-connector-java-5.1.42-bin.jar /usr/share/java/mysql-connector-java.jar
+$ wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.42.tar.gz
+$ tar zxvf mysql-connector-java-5.1.42.tar.gz
+$ sudo mkdir -p /usr/share/java/
+$ sudo chmod -R 777 /usr/share/java
+$ sudo cp mysql-connector-java-5.1.42/mysql-connector-java-5.1.42-bin.jar /usr/share/java/mysql-connector-java.jar
 
 ```
 Creating Databases for Activity Monitor, Reports Manager, Hive Metastore Server, Sentry Server, Cloudera Navigator Audit Server, and Cloudera Navigator Metadata Server
 ```
-[ec2-user@ip-172-31-17-69 ~]$ mysql -u root -p
+$ mysql -u root -p
 Enter password:
 create database amon DEFAULT CHARACTER SET utf8;
 grant all on amon.* TO 'amon'@'%' IDENTIFIED BY 'amon_password';
@@ -257,41 +231,69 @@ grant all privileges on oozie.* to 'oozie'@'%' identified by 'oozie';
 ```
 Add the MySQL JDBC Driver JAR to Oozie
 ```
-[ec2-user@ip-172-31-17-69 ~]$ sudo mkdir /var/lib/oozie
-[ec2-user@ip-172-31-17-69 ~]$ sudo cp /usr/share/java/mysql-connector-java.jar /var/lib/oozie/
+$ sudo mkdir /var/lib/oozie
+$ sudo cp /usr/share/java/mysql-connector-java.jar /var/lib/oozie/
 ```
 
 CM Installation
 ```
-[ec2-user@ip-172-31-17-69 ~]$ python --version
+$ python --version
 Python 2.7.5
-[ec2-user@ip-172-31-17-69 ~]$ sudo easy_install pip
-[ec2-user@ip-172-31-17-69 ~]$ sudo pip install psycopg2
+$ sudo easy_install pip
+$ sudo pip install psycopg2
 
-[ec2-user@ip-172-31-21-188 ~]$ wget https://archive.cloudera.com/cm5/redhat/7/x86_64/cm/cloudera-manager.repo
-[ec2-user@ip-172-31-21-188 ~]$ sudo cp cloudera-manager.repo /etc/yum.repos.d/
-[ec2-user@ip-172-31-21-188 ~]$ sudo yum install oracle-j2sdk1.7
-[ec2-user@ip-172-31-21-188 ~]$ sudo yum install cloudera-manager-daemons cloudera-manager-server
+$ wget https://archive.cloudera.com/cm5/redhat/7/x86_64/cm/cloudera-manager.repo
+$ sudo cp cloudera-manager.repo /etc/yum.repos.d/
+$ sudo vi /etc/yum.repos.d/cloudera-manager.repo
+# baseurl=https://archive.cloudera.com/cm5/redhat/7/x86_64/cm/5/
+baseurl=https://archive.cloudera.com/cm5/redhat/7/x86_64/cm/5.9.2/
+
+$ sudo yum install oracle-j2sdk1.7
+$ sudo yum install cloudera-manager-daemons cloudera-manager-server
 
 ```
 Prepare database
 ```
-[ec2-user@ip-172-31-17-69 ~]$ sudo /usr/share/cmf/schema/scm_prepare_database.sh mysql rman rman rman_password
-/usr/share/cmf/schema/scm_prepare_database.sh mysql metastore hive hive_password
-/usr/share/cmf/schema/scm_prepare_database.sh mysql sentry sentry sentry_password
-/usr/share/cmf/schema/scm_prepare_database.sh mysql metastore hive hive_password
-/usr/share/cmf/schema/scm_prepare_database.sh mysql sentry sentry sentry_password
-/usr/share/cmf/schema/scm_prepare_database.sh mysql nav nav nav_password
-/usr/share/cmf/schema/scm_prepare_database.sh mysql navms navms navms_password
-/usr/share/cmf/schema/scm_prepare_database.sh mysql amon amon amon_password
-/usr/share/cmf/schema/scm_prepare_database.sh mysql oozie oozie oozie
+sudo /usr/share/cmf/schema/scm_prepare_database.sh mysql rman rman rman_password
+sudo /usr/share/cmf/schema/scm_prepare_database.sh mysql metastore hive hive_password
+sudo /usr/share/cmf/schema/scm_prepare_database.sh mysql sentry sentry sentry_password
+sudo /usr/share/cmf/schema/scm_prepare_database.sh mysql metastore hive hive_password
+sudo /usr/share/cmf/schema/scm_prepare_database.sh mysql sentry sentry sentry_password
+sudo /usr/share/cmf/schema/scm_prepare_database.sh mysql nav nav nav_password
+sudo /usr/share/cmf/schema/scm_prepare_database.sh mysql navms navms navms_password
+sudo /usr/share/cmf/schema/scm_prepare_database.sh mysql amon amon amon_password
+sudo /usr/share/cmf/schema/scm_prepare_database.sh mysql oozie oozie oozie
 ```
 Start
 ```
-[ec2-user@ip-172-31-21-188 ~]$ sudo service cloudera-scm-server start
-sudo tail -f /var/log/cloudera-scm-server/cloudera-scm-server.log
-
-
+$ sudo service cloudera-scm-server start
+$ sudo tail -f /var/log/cloudera-scm-server/cloudera-scm-server.log
 
 ```
+Preparing the cluster:
+on all nodes: 
+Set vm.swappiness
+Disable transparent hugepage support
+Install the mysql package
+Download and copy the JDBC connector
 
+Preparing replica
+on server and replica nodes
+Install mysql-server on the server and replica nodes
+```
+$ mysql -u root -p
+GRANT REPLICATION SLAVE ON *.* TO 'root'@'ec2-34-208-235-6.us-west-2.compute.amazonaws.com' IDENTIFIED BY 'cloudera';
+SET GLOBAL binlog_format = 'ROW';
+FLUSH TABLES WITH READ LOCK;
+SHOW MASTER STATUS;
++-------------------------+----------+--------------+------------------+-------------------+
+| File                    | Position | Binlog_Do_DB | Binlog_Ignore_DB | Executed_Gtid_Set |
++-------------------------+----------+--------------+------------------+-------------------+
+| mysql_binary_log.000003 | 45695855 |              |                  |                   |
++-------------------------+----------+--------------+------------------+-------------------+
+UNLOCK TABLES;
+
+On the replica:
+CHANGE MASTER TO MASTER_HOST='ec2-34-209-76-165.us-west-2.compute.amazonaws.com', MASTER_USER='root', MASTER_PASSWORD='cloudera', MASTER_LOG_FILE='mysql_binary_log.000003', MASTER_LOG_POS=45695855;
+START SLAVE;
+SHOW SLAVE STATUS \G
