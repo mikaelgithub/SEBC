@@ -24,3 +24,13 @@ $ echo never > /sys/kernel/mm/transparent_hugepage/enabled
 <div style="page-break-after: always;"></div>
 
 ## <center> <a name="aa"/> Day 2 - 02/05/2017
+
+5. List your network interface configuration
+```
+[ec2-user@ip-172-31-21-188 ~]$ netstat -i
+Kernel Interface table
+Iface      MTU    RX-OK RX-ERR RX-DRP RX-OVR    TX-OK TX-ERR TX-DRP TX-OVR Flg
+eth0      9001      702      0      0 0           699      0      0      0 BMRU
+lo       65536        4      0      0 0             4      0      0      0 LRU
+
+```
