@@ -42,12 +42,15 @@ sudo kadmin.local
 addprinc root/admin
 addprinc -randkey host/kdc.amazonaws.com
 ktadd host/kdc.amazonaws.com
-
+```
+Install Kerberos client on all workstations
+```
 sudo yum -y install krb5-workstation
 kinit mikaelgithub/admin
 klist
 
-
+kinit root/admin
+```
 
 
 Create a user in Hue:
