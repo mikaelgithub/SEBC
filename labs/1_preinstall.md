@@ -72,7 +72,8 @@ Redirecting to /bin/systemctl status  ntpd.service
 ● ntpd.service - Network Time Service
    Loaded: loaded (/usr/lib/systemd/system/ntpd.service; disabled; vendor preset: disabled)
    Active: active (running) since Mon 2017-05-01 22:18:19 EDT; 2min 27s ago
-```   
+ntpdate pool.ntp.org
+   ```   
 
 ---
 <div style="page-break-after: always;"></div>
@@ -221,6 +222,8 @@ create database nav DEFAULT CHARACTER SET utf8;
 grant all on nav.* TO 'nav'@'%' IDENTIFIED BY 'nav_password';
 create database navms DEFAULT CHARACTER SET utf8;
 grant all on navms.* TO 'navms'@'%' IDENTIFIED BY 'navms_password';
+create database hue default character set utf8 default collate utf8_general_ci;
+grant all on hue.* to 'hue'@'%' IDENTIFIED BY 'hue_password';
 
 ```
 Configuring MySQL for Oozie
@@ -234,6 +237,7 @@ grant all privileges on oozie.* to 'oozie'@'%' identified by 'oozie';
 Add the MySQL JDBC Driver JAR to Oozie
 ```
 $ sudo mkdir /var/lib/oozie
+$ sudo chmod -R 777 /var/lib/oozie
 $ sudo cp /usr/share/java/mysql-connector-java.jar /var/lib/oozie/
 ```
 
@@ -265,6 +269,8 @@ sudo /usr/share/cmf/schema/scm_prepare_database.sh mysql nav nav nav_password
 sudo /usr/share/cmf/schema/scm_prepare_database.sh mysql navms navms navms_password
 sudo /usr/share/cmf/schema/scm_prepare_database.sh mysql amon amon amon_password
 sudo /usr/share/cmf/schema/scm_prepare_database.sh mysql oozie oozie oozie
+sudo /usr/share/cmf/schema/scm_prepare_database.sh mysql hue hue hue_password
+
 ```
 Start
 ```
@@ -309,9 +315,17 @@ Configuration of CM and CDH
 
 ```
 List of hosts:
-NN1 172.31.17.69 ec2-34-209-76-165.us-west-2.compute.amazonaws.com,
-NN2 172.31.8.123 ec2-34-208-235-6.us-west-2.compute.amazonaws.com
-DN1 172.31.20.125 ec2-52-36-135-147.us-west-2.compute.amazonaws.com,
-DN2 172.31.25.62 ec2-52-10-91-94.us-west-2.compute.amazonaws.com,
-DN3 172.31.30.207 ec2-54-70-80-229.us-west-2.compute.amazonaws.com,
+NN1 34.210.40.43 ip-172-31-17-69.us-west-2.compute.internal,
+NN2 35.163.217.90 ip-172-31-8-123.us-west-2.compute.internal
+DN1 35.164.86.40 ip-172-31-16-146.us-west-2.compute.internal
+DN2 35.167.132.169 ip-172-31-24-232.us-west-2.compute.internal
+DN3 52.41.196.113 ip-172-31-28-199.us-west-2.compute.internal
+
+ec2-34-210-40-43.us-west-2.compute.amazonaws.com
+ec2-35-163-217-90.us-west-2.compute.amazonaws.com
+ec2-35-164-86-40.us-west-2.compute.amazonaws.com
+ec2-35-167-132-169.us-west-2.compute.amazonaws.com
+ec2-52-41-196-113.us-west-2.compute.amazonaws.com
+
+
 
