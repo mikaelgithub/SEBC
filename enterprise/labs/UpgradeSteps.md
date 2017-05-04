@@ -31,3 +31,13 @@ sudo vi /etc/yum.repos.d/cloudera-manager.repo
 
 sudo yum clean all
 sudo yum upgrade cloudera-manager-server cloudera-manager-daemons cloudera-manager-agent
+
+Checking:
+rpm -qa 'cloudera-manager-*'
+
+Starting Cloudera Manager Server
+sudo service cloudera-scm-server start
+tail -f /var/log/cloudera-scm-server/cloudera-scm-server.log
+
+Upgrade the Agents through the Wizard in CM
+
