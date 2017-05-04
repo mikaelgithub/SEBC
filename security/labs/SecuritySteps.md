@@ -1,6 +1,6 @@
 Create user
 sudo useradd mikaelgithub
-
+id -u 
 
 Install MIT KDC
 
@@ -56,3 +56,4 @@ kinit root/admin
 Create a user in Hue:
 mikaelgithub / cloudera
 
+UPdate security group on HDFS service config
