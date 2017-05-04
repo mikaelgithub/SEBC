@@ -1,8 +1,8 @@
-## Pre installation checks
+# Pre installation checks
 
-# List the cloud provider you are using (AWS, GCE, Azure, other)
+## List the cloud provider you are using (AWS, GCE, Azure, other)
 AWS
-# List the nodes you are using by IP address and name
+## List the nodes you are using by IP address and name
 
 52.62.49.204
 ec2-52-62-49-204.ap-southeast-2.compute.amazonaws.com
@@ -15,10 +15,10 @@ ec2-13-54-190-4.ap-southeast-2.compute.amazonaws.com
 13.54.139.169
 ec2-13-54-139-169.ap-southeast-2.compute.amazonaws.com
 
-# List the Linux release you are using
+## List the Linux release you are using
 ReHat 7.3
 
-# Demonstrate the disk capacity available on each node is >= 30 GB
+## Demonstrate the disk capacity available on each node is >= 30 GB
 
 I am using 50GB disk size on all nodes.
 ```
@@ -45,7 +45,7 @@ Disk /dev/xvda: 53.7 GB, 53687091200 bytes, 104857600 sectors
 
 ```
 
-# List the command and output for yum repolist enabled
+## List the command and output for yum repolist enabled
 ```
 sudo yum repolist enabled 
 [ec2-user@ip-172-31-11-187 ~]$ sudo yum repolist enabled
@@ -67,7 +67,7 @@ rhui-REGION-rhel-server-rh-common/7Server/x86_64 Red Hat Enterprise Linux    228
 repolist: 14,511
 ```
 
-## Adding users
+# Adding users
 
 ```
 useradd -u 2300 cate
