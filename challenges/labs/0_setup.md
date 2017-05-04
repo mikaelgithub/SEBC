@@ -4,16 +4,16 @@
 AWS
 ## List the nodes you are using by IP address and name
 
-52.62.49.204
-ec2-52-62-49-204.ap-southeast-2.compute.amazonaws.com
-52.62.21.27
-ec2-52-62-21-27.ap-southeast-2.compute.amazonaws.com
-13.55.208.225
-ec2-13-55-208-225.ap-southeast-2.compute.amazonaws.com
-13.54.190.4
-ec2-13-54-190-4.ap-southeast-2.compute.amazonaws.com
-13.54.139.169
-ec2-13-54-139-169.ap-southeast-2.compute.amazonaws.com
+52.62.49.204  
+ec2-52-62-49-204.ap-southeast-2.compute.amazonaws.com  
+52.62.21.27  
+ec2-52-62-21-27.ap-southeast-2.compute.amazonaws.com  
+13.55.208.225  
+ec2-13-55-208-225.ap-southeast-2.compute.amazonaws.com  
+13.54.190.4  
+ec2-13-54-190-4.ap-southeast-2.compute.amazonaws.com  
+13.54.139.169  
+ec2-13-54-139-169.ap-southeast-2.compute.amazonaws.com  
 
 ## List the Linux release you are using
 ReHat 7.3
