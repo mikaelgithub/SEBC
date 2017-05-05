@@ -14,3 +14,21 @@ mysql  Ver 14.14 Distrib 5.6.36, for Linux (x86_64) using  EditLine wrapper
 ```
 
 The command and output for listing your created databases
+```
+mysql> show databases
+    -> ;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| hive               |
+| hue                |
+| mysql              |
+| oozie              |
+| performance_schema |
+| rman               |
+| scm                |
+| sentry             |
++--------------------+
+
+```
