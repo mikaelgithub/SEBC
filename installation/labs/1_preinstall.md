@@ -12,8 +12,11 @@ $ sudo sysctl vm.swappiness=1
 $ mount
 $ mount -t ext
 ```
+[??? not too helpful]
+
 3. 
 * This step is not required
+[If I can't see your mount points/fs types I can't corroborate your assertion]
 
 4. Disable transparent hugepage support
 ```
@@ -35,6 +38,7 @@ Iface      MTU    RX-OK RX-ERR RX-DRP RX-OVR    TX-OK TX-ERR TX-DRP TX-OVR Flg
 eth0      9001      702      0      0 0           699      0      0      0 BMRU
 lo       65536        4      0      0 0             4      0      0      0 LRU
 ```
+[I had `ifconfig` in mind here]
 
 6. Forward and reverse lookup
 ```
