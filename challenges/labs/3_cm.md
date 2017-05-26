@@ -1,5 +1,5 @@
 #HDFS
-
+```
 [ec2-user@ip-172-31-11-187 yum.repos.d]$ hdfs dfs -ls /user
 Found 7 items
 drwxr-xr-x   - hdfs         supergroup            0 2017-05-04 21:44 /user/hdfs
@@ -9,11 +9,12 @@ drwxrwxr-x   - hue          hue                   0 2017-05-04 21:41 /user/hue
 drwxrwxr-x   - impala       impala                0 2017-05-04 21:41 /user/impala
 drwxr-xr-x   - mikaelgithub mikaelgithub          0 2017-05-04 21:44 /user/mikaelgithub
 drwxrwxr-x   - oozie        oozie                 0 2017-05-04 21:41 /user/oozie
-
+```
 ## API Version
+```
 http://52.62.49.204:7180/api/version
 v16
-
+```
 ## Hosts
 http://52.62.49.204:7180/api/v16/hosts
 ```
@@ -81,8 +82,9 @@ http://52.62.49.204:7180/api/v16/hosts
   } ]
 }
 ```
-
+```
 http://52.62.49.204:7180/api/v16/clusters/mikaelgithub/services
+```
 ```
 {
   "items" : [ {
