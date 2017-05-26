@@ -42,3 +42,4 @@ Master_SSL_Verify_Server_Cert: No
              Master_Server_Id: 0
 1 row in set (0.00 sec)
 ```
+[How do you tell if replication is working correctly?]
