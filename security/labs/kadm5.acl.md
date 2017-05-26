@@ -1,1 +1,1 @@
-*/admin@AMAZONAWS.COM   *
+`*/admin@AMAZONAWS.COM   *`
