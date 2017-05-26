@@ -1,4 +1,5 @@
 # Configuration snippets may be placed in this directory as well
+```
 includedir /etc/krb5.conf.d/
 
 [logging]
@@ -24,3 +25,4 @@ includedir /etc/krb5.conf.d/
 [domain_realm]
  .amazonaws.com = AMAZONAWS.COM
  amazonaws.com = AMAZONAWS.COM
+ ```   
