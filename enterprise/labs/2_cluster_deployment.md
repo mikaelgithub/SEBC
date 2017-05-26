@@ -3,7 +3,7 @@ Curl on the end point
 curl -u admin:admin 'http://localhost:7180/api/v2/cm/deployment'
 ```
 
-
+```
 [ec2-user@ip-172-31-2-22 ~]$ curl -u admin:admin 'http://localhost:7180/api/v2/cm/deployment'?pretty
 {
   "timestamp" : "2017-05-04T07:01:00.536Z",
@@ -851,3 +851,4 @@ curl -u admin:admin 'http://localhost:7180/api/v2/cm/deployment'
       "value" : "MIKAELGITHUB.ME"
     } ]
   }
+```
