@@ -1,5 +1,6 @@
 *************************** 1. row ***************************
-               Slave_IO_State: Connecting to master
+```
+Slave_IO_State: Connecting to master
                   Master_Host: ec2-34-209-76-165.us-west-2.compute.amazonaws.com
                   Master_User: root
                   Master_Port: 3306
@@ -40,3 +41,4 @@ Master_SSL_Verify_Server_Cert: No
   Replicate_Ignore_Server_Ids:
              Master_Server_Id: 0
 1 row in set (0.00 sec)
+```
