@@ -1,3 +1,4 @@
+```
 [kdcdefaults]
  kdc_ports = 88
  kdc_tcp_ports = 88
@@ -14,3 +15,4 @@
   default_principal_flags = +renewable, +forwardable
   default_principal_flags = +renewable, +forwardable
  }
+ ```
