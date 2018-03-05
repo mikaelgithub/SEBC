@@ -5,9 +5,9 @@
 
 ---
 
-# <center> Cloudera Services Enablement Boot Camp </center>
-## <center> May 1-5, 2017 </center>
-## <center> Sydney, Australia</center>
+# <center> FCE Install/Operations Boot Camp </center>
+## <center> March 5-9, 2018 </center>
+## <center> Palo Alto, California</center>
 
 ---
 <div style="page-break-after: always;"></div>
@@ -21,14 +21,13 @@
 ---
 <div style="page-break-after: always;"></div>
 
-## <center> <a name="instructor"/> Instructors & Students
+## <center> <a name="instructor"/> Instructor & Students
 
-* Michael Ernest (Senior Learning Architect) - `mfernest`
-* Carlos Piva (Senior Solutions Architect) - `cpiva`
+* Michael Ernest (Senior Learning Architect) - mfernest
+* Claudio Fusi (Solutions Architect ) - cfusi
 * Please introduce yourselves:
   * Name
-  * Internal: Region & Role
-  * Partner: Company & Location
+  * Role & Location
   * Your experience with Hadoop to date
 
 ---
@@ -36,7 +35,7 @@
 
 ## <center> <a name="audience"/> Audience Assumptions
 
-The course material assumes you have knowledge/experience to:
+The course material assumes you have knowledge or experience to:
 
 * Complete all labs in Cloudera's Hadoop for Administrators Course
 * Certify as a Hadoop Administrator
@@ -48,9 +47,9 @@ The course material assumes you have knowledge/experience to:
 
 ## <center> <a name="course_objectives"/> Course Objectives
 
-* Prepare you to install Cloudera Manager-driven clusters for production use
-* Evaluate your readiness for service engagements
-* Identify next steps for your own skills development
+* Prepare you to install an EDH cluster for production use
+* Evaluate your readiness for a service engagement
+* Identify next steps in your own skills development for EDH
 
 ---
 <div style="page-break-after: always;"></div>
@@ -81,9 +80,9 @@ The course material assumes you have knowledge/experience to:
 ## <center> <a name="scored_labs"/> Submitting Work
 
 * All work is submitted to your GitHub repo
-    * Add your instructor as a Collaborator
-    * We'll review Git/GitHub tools this morning 
-    * Submit labs in Markdown or PNG screenshots as instructed
+    * Add your instructors as Collaborators
+    * We'll review git/GitHub tools in class 
+    * Use Markdown for text and PNG format for screenshots 
 * We score each lab/challenge as `Complete`, `Incomplete`, or `Did Not Submit`
 * The final evaluation is `Pass`, `Provisional Pass`, or `No Pass`
 * We evaluate your labs for
