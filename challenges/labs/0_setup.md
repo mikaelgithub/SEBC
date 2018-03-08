@@ -19,11 +19,6 @@ mel4.c.sebc-194321.internal
 mel5.c.sebc-194321.internal
 10.142.0.6
 ```
-mel1.c.sebc-194321.internal 10.142.0.2
-mel2.c.sebc-194321.internal 10.142.0.3
-mel3.c.sebc-194321.internal 10.142.0.4
-mel4.c.sebc-194321.internal 10.142.0.5
-mel5.c.sebc-194321.internal 10.142.0.6
 
 ## List the Linux release you are using
 ```
