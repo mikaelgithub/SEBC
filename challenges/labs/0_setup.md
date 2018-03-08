@@ -63,11 +63,17 @@ updates/7/x86_64          CentOS-7 - Updates                                    
 repolist: 25,185
 ```
 
-## Add users
+## Add users and groups
 ```
 [root@mel1 mikael_dauzet]# cat /etc/passwd | grep jim
 jim:x:2800:2800::/home/jim:/bin/bash
 [root@mel1 mikael_dauzet]# cat /etc/passwd | grep jemaine
 jemaine:x:2900:2900::/home/jemaine:/bin/bash
 [root@mel1 mikael_dauzet]# 
+```
+```
+[root@mel1 mikael_dauzet]# cat /etc/group | grep kiwi
+kiwi:x:2901:jemaine
+[root@mel1 mikael_dauzet]# cat /etc/group | grep aussie
+aussie:x:2902:jim
 ```
